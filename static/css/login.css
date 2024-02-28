@@ -1,6 +1,5 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('/static/images/kart.png'); /* Updated path to your image */
     background-size: cover;
     color: #fff;
     text-align: center;
