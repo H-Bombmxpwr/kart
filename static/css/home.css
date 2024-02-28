@@ -69,3 +69,37 @@ input[type="text"], select {
 .logout-button:hover {
     background-color: #ffcc00; /* Lighten the button when hovered */
 }
+
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.github-button {
+    background-color: #559900; /* Luigi green */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex; /* changed from flex to inline-flex */
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* In case you change it to an anchor tag */
+}
+
+.github-button img {
+    width: 24px; /* Size of the GitHub logo image */
+    margin-right: 8px;
+}
+
+.github-button:hover {
+    background-color: #ffcc00; /* Lighten the button when hovered */
+}
+

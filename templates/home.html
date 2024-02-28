@@ -68,5 +68,16 @@
     <form action="{{ url_for('logout') }}" method="get">
         <button type="submit" class="logout-button">Logout</button>
     </form>
+
+    <footer>
+        <form action="https://github.com/H-Bombmxpwr/kart" method="get" target="_blank">
+            <button type="submit" class="github-button">
+                <img src="{{ url_for('static', filename='images/github-logo.png') }}" alt="Source" />
+                Source
+            </button>
+        </form>
+    </footer>
+
+    
 </body>
 </html>
