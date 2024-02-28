@@ -1,0 +1,63 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('/static/images/kart.avif'); /* Updated path to your image */
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px 0px #000;
+    width: 300px;
+}
+
+h1 {
+    color: #ffcc00; /* Mario Kart's gold/yellow theme */
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+}
+
+.login-button {
+    background-color: #e60000; /* Mario red */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    text-transform: uppercase;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 4px #bb0000; /* Darker red shadow */
+}
+
+.login-button:hover {
+    background-color: #ffcc00; /* Lighten the button when hovered */
+    box-shadow: 0px 4px #cc9a00; /* Darker yellow shadow for contrast */
+}
+
+.login-button:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}

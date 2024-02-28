@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #ffcc00; /* Mario Kart's gold/yellow theme */
+    background-color: #87CEEB; /* Sky blue background */
     color: #333;
     text-align: center;
 }
@@ -47,16 +47,25 @@ form {
     margin-top: 20px;
 }
 
-input[type="text"] {
-    border: 2px solid #e60000;
+input[type="text"], select {
+    border: 2px solid #e60000; /* Mario red */
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
 }
 
-select {
-    border: 2px solid #559900;
-    border-radius: 5px;
-    padding: 10px;
+.logout-button {
+    background-color: #559900; /* Luigi green */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
     margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #ffcc00; /* Lighten the button when hovered */
 }
