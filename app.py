@@ -77,7 +77,9 @@ def home():
 
     save_user_stats(username_hashed, user_stats)  # Save the updated stats including total_points
 
-    return render_template('home.html', players=user_stats, last_position_logged=session.get('last_position_logged'), username=username)
+    sorted_players = sorted(user_stats.items(), key=lambda player: player[1].get('total_points', 0), reverse=True)
+
+    return render_template('home.html', players=sorted_players, last_position_logged=session.get('last_position_logged'), username=username)
 
 
 @app.route('/login', methods=['GET', 'POST'])
