@@ -93,7 +93,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import json
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key'
+app.secret_key = 'not-used-secret-key'
 
 def hash_username(username):
     """ Hash the username to create a unique identifier. """
