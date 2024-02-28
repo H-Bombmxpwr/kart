@@ -15,7 +15,7 @@
     </form>
     <hr>
     <h2>Log Stats for Player</h2>
-    <form action="/log_position" method="POST">
+    <form action="{{ url_for('log_position') }}" method="POST">
         <label for="player_name">Player Name:</label>
         <select name="player_name" required>
             {% for player in players %}
@@ -31,7 +31,7 @@
         <button type="submit">Log Position</button>
     </form>
     {% if last_position_logged %}
-    <form action="/undo_position" method="POST">
+    <form action="{{ url_for('undo_position') }}" method="POST">
         <button type="submit">Undo Last Log</button>
     </form>
     {% endif %}
@@ -53,7 +53,7 @@
     <td>{{ positions[pos|string] if positions is mapping else 0 }}</td>
     {% endfor %}
     <td>
-        <form action="/remove_player" method="POST">
+        <form action="{{ url_for('remove_player') }}" method="POST">
             <input type="hidden" name="player_name" value="{{ player }}">
             <button type="submit">Remove</button>
         </form>

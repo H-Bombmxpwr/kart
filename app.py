@@ -91,6 +91,8 @@
 import hashlib
 from flask import Flask, render_template, request, redirect, url_for, session
 import json
+from functools import wraps
+
 
 app = Flask(__name__)
 app.secret_key = 'not-used-secret-key'
@@ -98,6 +100,16 @@ app.secret_key = 'not-used-secret-key'
 def hash_username(username):
     """ Hash the username to create a unique identifier. """
     return hashlib.sha256(username.encode('utf-8')).hexdigest()
+
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'username_hashed' not in session:
+            return redirect(url_for('login', next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
 
 
 # Function to compute total points based on positions
@@ -125,6 +137,7 @@ def save_user_stats(username_hashed, stats):
         json.dump(stats, file, indent=4)
 
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def home():
     # Check if the session has a stored username hash; if not, redirect to login
     if 'username_hashed' not in session:
@@ -142,7 +155,7 @@ def home():
         return redirect(url_for('home'))
 
     # No need to recalculate all points if we're not logging positions here
-    return render_template('home.html', players=user_stats)
+    return render_template('home.html', players=user_stats, last_position_logged=session.get('last_position_logged'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -156,6 +169,7 @@ def login():
 
 
 @app.route('/log_position', methods=['POST'])
+@login_required
 def log_position():
     if 'username_hashed' not in session:
         return redirect(url_for('login'))
@@ -171,11 +185,13 @@ def log_position():
         else:
             user_stats[player_name][position] = 1
         user_stats[player_name]['total_points'] = compute_total_points(user_stats[player_name])
+        session['last_position_logged'] = {'player_name': player_name, 'position': position}
         save_user_stats(username_hashed, user_stats)
     
     return redirect(url_for('home'))
 
 @app.route('/remove_player', methods=['POST'])
+@login_required
 def remove_player():
     if 'username_hashed' not in session:
         return redirect(url_for('login'))
@@ -191,6 +207,7 @@ def remove_player():
     return redirect(url_for('home'))
 
 @app.route('/undo_position', methods=['POST'])
+@login_required
 def undo_position():
     if 'username_hashed' not in session:
         return redirect(url_for('login'))
