@@ -103,3 +103,12 @@ footer {
     background-color: #ffcc00; /* Lighten the button when hovered */
 }
 
+
+.username-display {
+    font-size: 2em; /* Adjust the size as needed to match the "Add Player" text */
+    color: #e60000; /* Mario red, same as your h1, h2 definitions */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold; /* If your "Add Player" text is bold */
+}
+

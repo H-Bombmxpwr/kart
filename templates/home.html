@@ -8,6 +8,11 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/mario.png') }}">
 </head>
 <body>
+
+    {% if username %}
+    <div class="username-display">Logged in as: {{ username }}</div>
+    {% endif %}
+
     <h1>Add a New Player</h1>
     <form method="POST">
         <label for="player_name">Player Name:</label>
@@ -78,6 +83,6 @@
         </form>
     </footer>
 
-    
+
 </body>
 </html>
